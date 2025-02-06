@@ -10,6 +10,10 @@ export class CategoriesService {
 
   constructor(@InjectRepository(Category) private categoryRepository: Repository<Category>) {}
 
+  isAdult(age: number): boolean {
+    return age >= 18;
+  }
+
   create(createCategoryDto: CreateCategoryDto) {
     return this.categoryRepository.save(createCategoryDto);
   }
