@@ -10,6 +10,10 @@ export class CategoriesService {
 
   constructor() {}
 
+  isAdult(age: number): boolean {
+    return age >= 18;
+  }
+
   create(createCategoryDto: CreateCategoryDto) {
     // return this.categoryRepository.save(createCategoryDto);
   }
