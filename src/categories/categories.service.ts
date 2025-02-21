@@ -8,10 +8,10 @@ import { Repository } from 'typeorm';
 @Injectable()
 export class CategoriesService {
 
-  constructor() {}
+  constructor(@InjectRepository(Category) private categoryRepository: Repository<Category>) {}
 
   create(createCategoryDto: CreateCategoryDto) {
-    // return this.categoryRepository.save(createCategoryDto);
+    return this.categoryRepository.save(createCategoryDto);
   }
 
   isAdult(age: number): boolean {
@@ -23,7 +23,7 @@ export class CategoriesService {
 
 
   findAll() {
-    // return this.categoryRepository.find({});
+    return this.categoryRepository.find({});
   }
 
 
