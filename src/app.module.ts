@@ -5,13 +5,15 @@ import { AppService } from './app.service';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { CategoriesModule } from './categories/categories.module';
 import { dbConfig } from '../data.source';
+import { EntriesModule } from './entries/entries.module';
 
 
 @Module({
  imports: [
    ConfigModule.forRoot({ isGlobal: true }),
    TypeOrmModule.forRoot(dbConfig),
- CategoriesModule],
+ CategoriesModule,
+ EntriesModule],
  controllers: [AppController],
  providers: [AppService],
 })
