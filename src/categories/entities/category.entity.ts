@@ -8,4 +8,6 @@ export class Category {
     @Column()
     title: string
 
+    @Column({ default: '' })
+    description: string
 }
