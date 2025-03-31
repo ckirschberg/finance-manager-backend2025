@@ -6,4 +6,6 @@ export class CreateEntryDto {
     amount: number
 
     category: Category
+
+    photo: any;
 }

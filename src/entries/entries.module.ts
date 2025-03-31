@@ -4,9 +4,10 @@ import { EntriesController } from './entries.controller';
 import { Entry } from './entities/entry.entity';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { UsersModule } from '../users/users.module';
+import { HttpModule } from '@nestjs/axios';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([Entry]), UsersModule],
+  imports: [HttpModule, TypeOrmModule.forFeature([Entry]), UsersModule],
   controllers: [EntriesController],
   providers: [EntriesService],
 })

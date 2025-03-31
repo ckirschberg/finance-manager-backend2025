@@ -10,7 +10,10 @@ export class EntriesController {
   constructor(private readonly entriesService: EntriesService) {}
 
   @Post()
-  create(@Body() createEntryDto: CreateEntryDto) {
+  async create(@Body() createEntryDto: CreateEntryDto) {
+    const display_url = await this.entriesService.saveImage(createEntryDto.photo.base64);
+    createEntryDto.photo = display_url; //just save the url to the image in our database.
+
     return this.entriesService.create(createEntryDto);
   }
 
