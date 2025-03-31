@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete, UseGuards } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, UseGuards, Req } from '@nestjs/common';
 import { EntriesService } from './entries.service';
 import { CreateEntryDto } from './dto/create-entry.dto';
 import { UpdateEntryDto } from './dto/update-entry.dto';
@@ -16,7 +16,8 @@ export class EntriesController {
 
   @Get()
   @UseGuards(JwtAuthGuard, PremiumUserGuard)
-  findAll() {
+  findAll(@Req() req) {
+    console.log("req.user", req.user);
     return this.entriesService.findAll();
   }
 

@@ -8,7 +8,7 @@ import { UserEntity } from './entities/user'
 export class AdminGuard implements CanActivate {
   constructor(@Inject(UsersService) private usersService: UsersService) {}
   
-  async canActivate(context: ExecutionContext): Promise<boolean> {
+  async canActivate(context: ExecutionContext) : Promise<boolean> {
     const request = context.switchToHttp().getRequest()
     const userId: number = request.user.id
 
