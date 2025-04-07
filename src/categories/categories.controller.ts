@@ -9,18 +9,21 @@ export class CategoriesController {
   constructor(private readonly categoriesService: CategoriesService) {}
 
 
-  @UseGuards(JwtAuthGuard)
-  @Post()
-  create(@Req() req, @Body() createCategoryDto: CreateCategoryDto) {
-    console.log(req.user);
+  // @UseGuards(JwtAuthGuard)
+  @Post() // getting access to the 
+  create(/*@Req() req,*/ @Body() createCategoryDto: CreateCategoryDto) {
+    // console.log(req.user);
     
-    return this.categoriesService.create(createCategoryDto, req.user);
+    return this.categoriesService.create(createCategoryDto);
   }
 
-  @UseGuards(JwtAuthGuard)
+  // @UseGuards(JwtAuthGuard)
   @Get()
   findAll(@Req() req) {
-    return this.categoriesService.findAll(req.user.id);
+    //return this.categoriesService.findAll(req.user.id);
+    console.log("get all");
+    
+    return this.categoriesService.findAll();
   }
 
   @Get(':id')

@@ -4,5 +4,5 @@ export class CreateCategoryDto {
     title: string;
     description: string;
 
-    user: UserEntity
+    // user: UserEntity
 }

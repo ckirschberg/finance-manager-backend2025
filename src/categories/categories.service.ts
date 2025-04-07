@@ -11,8 +11,8 @@ export class CategoriesService {
 
   constructor(@InjectRepository(Category) private categoryRepository: Repository<Category>) {}
 
-  create(createCategoryDto: CreateCategoryDto, user: UserEntity) {
-    createCategoryDto.user = user;
+  create(createCategoryDto: CreateCategoryDto) {
+    // createCategoryDto.user = user;
     return this.categoryRepository.save(createCategoryDto);
   }
 
@@ -24,8 +24,9 @@ export class CategoriesService {
   }
 
 
-  findAll(userId) {
-    return this.categoryRepository.find({ where: { user: { id: userId } } });
+  findAll() {
+    // return this.categoryRepository.find({ where: { user: { id: userId } } });
+    return this.categoryRepository.find();
   }
 
 

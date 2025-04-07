@@ -16,8 +16,6 @@ export class Category {
     @OneToMany(() => Entry, (entry) => entry.category)
     entries: Entry[]
 
-    @ManyToOne(() => UserEntity, (user) => user.categories /*, {
-        eager: true
-    }*/)
-    user: UserEntity
+    // @ManyToOne(() => UserEntity, (user) => user.categories )
+    // user: UserEntity
 }

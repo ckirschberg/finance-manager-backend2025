@@ -20,6 +20,6 @@ export class UserEntity {
   })
   role: Role;
 
-  @OneToMany(() => Category, (category) => category.user)
-  categories: Category[]
+  // @OneToMany(() => Category, (category) => category.user)
+  // categories: Category[]
 }
