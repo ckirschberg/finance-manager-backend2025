@@ -4,13 +4,15 @@ import { UpdateCategoryDto } from './dto/update-category.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Category } from './entities/category.entity';
 import { Repository } from 'typeorm';
+import { UserEntity } from '../authentication/entities/user.entity';
 
 @Injectable()
 export class CategoriesService {
 
   constructor(@InjectRepository(Category) private categoryRepository: Repository<Category>) {}
 
-  create(createCategoryDto: CreateCategoryDto) {
+  create(createCategoryDto: CreateCategoryDto, user: UserEntity) {
+    createCategoryDto.user = user;
     return this.categoryRepository.save(createCategoryDto);
   }
 
@@ -22,8 +24,8 @@ export class CategoriesService {
   }
 
 
-  findAll() {
-    return this.categoryRepository.find({});
+  findAll(userId) {
+    return this.categoryRepository.find({ where: { user: { id: userId } } });
   }
 
 

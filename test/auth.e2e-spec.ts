@@ -4,7 +4,7 @@ import * as request from 'supertest';
 import { AppModule } from './../src/app.module';
 import { getRepositoryToken } from '@nestjs/typeorm';
 import { Connection, Repository } from 'typeorm'
-import { UserEntity } from '../src/authentication/entities/user';
+import { UserEntity } from '../src/authentication/entities/user.entity';
 import { UsersService } from '../src/users/users.service';
 import { AuthService } from '../src/authentication/auth.service';
 
