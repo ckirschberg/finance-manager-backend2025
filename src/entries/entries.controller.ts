@@ -4,12 +4,17 @@ import { CreateEntryDto } from './dto/create-entry.dto';
 import { UpdateEntryDto } from './dto/update-entry.dto';
 import { JwtAuthGuard } from '../authentication/jwt-auth.guard';
 import { PremiumUserGuard } from '../authentication/premium-user.guard';
+import { ApiTags, ApiOperation, ApiResponse } from '@nestjs/swagger';
+
 
 @Controller('entries')
+@ApiTags('entries')
 export class EntriesController {
   constructor(private readonly entriesService: EntriesService) {}
 
   @Post()
+  @ApiOperation({ summary: 'Create new entry' })
+  @ApiResponse({ status: 201, description: 'Newly created entry' })
   async create(@Body() createEntryDto: CreateEntryDto) {
     const display_url = await this.entriesService.saveImage(createEntryDto.photo.base64);
     createEntryDto.photo = display_url; //just save the url to the image in our database.
